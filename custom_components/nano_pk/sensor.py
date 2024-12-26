@@ -45,16 +45,14 @@ async def async_setup_platform(hass, config, async_add_entities, discovery_info=
             HargassnerSensor(bridge, name+" smoke gas temperature", "TRG"),
             HargassnerSensor(bridge, name+" output", "Leistung", "mdi:fire"),
             HargassnerSensor(bridge, name+" outside temperature", "Taus"),
-            HargassnerSensor(bridge, name+" buffer temperature 0", "TB1", "mdi:thermometer-lines"),
             HargassnerSensor(bridge, name+" buffer temperature 1", "TPo", "mdi:thermometer-lines"),
             HargassnerSensor(bridge, name+" buffer temperature 2", "TPm", "mdi:thermometer-lines"),
             HargassnerSensor(bridge, name+" buffer temperature 3", "TPu", "mdi:thermometer-lines"),
             HargassnerSensor(bridge, name+" return temperature", "TRL", "mdi:coolant-temperature"),
-            HargassnerSensor(bridge, name+" buffer level", "Puff Füllgrad", "mdi:gauge"),
-            HargassnerSensor(bridge, name+" pellet stock", "Lagerstand", "mdi:silo"),
-            HargassnerSensor(bridge, name+" pellet consumption", "Verbrauchszähler", "mdi:basket-unfill"),
+            HargassnerSensor(bridge, name+" buffer level", "PufLad", "mdi:gauge"),
             HargassnerSensor(bridge, name+" flow temperature", "TVL_1", "mdi:coolant-temperature"),
-            HargassnerEnergySensor(bridge, name)
+            HargassnerSensor(bridge, name+" O2", "O2")
+            # HargassnerEnergySensor(bridge, name)
     ])
 
 
