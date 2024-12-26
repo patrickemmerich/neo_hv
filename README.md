@@ -12,9 +12,18 @@ Read on how to try this and let me know if it works!
 
 ### Quick setup guide ###
 
-1. Create a folder `custom_components` in your Home Assistant `config` folder (if not yet done).
-2. Copy all code from `custom_components/nano_pk` of this repository to `config/custom_components/nano_pk`.
-3. Add a section like this to your configuration.yaml:
+1. Create ~/compose.yaml
+```
+services:
+  homeassistant:
+    image: "ghcr.io/home-assistant/home-assistant:stable"
+    ports:
+      - "8123:8123"
+    volumes:
+      - <<path to neo_hv/custom_components>>:/config/custom_components
+      - ~/config:/config
+```
+2. Create ~/config/configuration.yaml:
 ```
 nano_pk:
   host: 192.168.001.191
@@ -23,7 +32,12 @@ nano_pk:
   parameters: STANDARD
   language: DE
 ```
-4. Restart HA.
+3. docker compose up
+4. Howto access HA UI from other client in same LAN
+- find server's IP via ifconfig -> e.g. 192.168.1.105
+- check with netcat that HA UI is up and accessible: e.g. `nc -v 192.168.1.105 8123`
+- check from client to access HA UI http://192.168.1.105:8123
+- details: https://serverfault.com/questions/229441/how-do-i-access-a-local-web-server-on-my-laptop-from-another-computer
 
 ### Supported parameters ###
 - host [required]: IP of your heating. After connecting the heating with your local network, the touch screen will show this.
