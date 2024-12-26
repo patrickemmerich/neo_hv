@@ -1,5 +1,5 @@
-# nano_pk
-Home Assistant integration of Hargassner Nano-PK pellet heating systems.
+# neo_hv (fork from nano_pk)
+Home Assistant integration of Hargassner Neo HV 20 Stückholzvergaser.
 
 This is a custom component to integrate Hargassner heatings with Touch Tronic (touch screen control) into Home Assistant.
 It will add a number of new sensors to your HA that display the current state of the heating.
@@ -17,9 +17,9 @@ Read on how to try this and let me know if it works!
 3. Add a section like this to your configuration.yaml:
 ```
 nano_pk:
-  host: 192.168.0.10
-  msgformat : NANO_V14L
-  devicename: Nano-PK
+  host: 192.168.001.191
+  msgformat : NEO_HV_20
+  devicename: Neo-HV
   parameters: STANDARD
   language: DE
 ```
