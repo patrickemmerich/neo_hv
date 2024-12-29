@@ -203,7 +203,8 @@ class HargassnerStateSensor(HargassnerSensor):
         self._stateClass = None
         self._deviceClass = SensorDeviceClass.ENUM
         if lang==CONF_LANG_DE:
-            self._options = ["Unbekannt", "Aus", "Startvorbereitung", "Kessel Start", "Zündüberwachung", "Zündung", "Übergang LB", "Leistungsbrand", "Gluterhaltung", "Warten auf EA", "Entaschung", "-", "Putzen"]
+            # self._options = ["Unbekannt", "Aus", "Startvorbereitung", "Kessel Start", "Zündüberwachung", "Zündung", "Übergang LB", "Leistungsbrand", "Gluterhaltung", "Warten auf EA", "Entaschung", "-", "Putzen"]
+            self._options = ["Unbekannt", "Aus", "Startvorbereitung", "Kessel Start", "Anheizen", "Zündung", "Leistungsbrand", "Leistungsbrand2", "Gluterhaltung", "Warten auf EA", "Entaschung", "-", "Putzen"]
         else:
             self._options = ["Unknown", "Off", "Preparing start", "Boiler start", "Monitoring ignition", "Ignition", "Transition to FF", "Full firing", "Ember preservation", "Waiting for AR", "Ash removal", "-", "Cleaning"]
 
@@ -212,10 +213,10 @@ class HargassnerStateSensor(HargassnerSensor):
         try:
             idxState = int(rawState)
             if not (idxState>=0 and idxState<=12):
-                _LOGGER.warning("HargassnerStateSensor.update(): State index out of bounds.\n")
+                _LOGGER.warning(f"HargassnerStateSensor.update(): State index={idxState} out of bounds.\n")
                 idxState=0
         except Exception:
-            _LOGGER.warning("HargassnerStateSensor.update(): Invalid state.\n")
+            _LOGGER.warning(f"HargassnerStateSensor.update(): Invalid state rawstate={rawState}.\n")
             idxState = 0
         self._value = self._options[idxState]
         if idxState==6 or idxState==7: self._icon = "mdi:fireplace"  # (transition to) full firing
