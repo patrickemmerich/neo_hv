@@ -205,7 +205,7 @@ class HargassnerStateSensor(HargassnerSensor):
         self._deviceClass = SensorDeviceClass.ENUM
         if lang==CONF_LANG_DE:
             # self._options = ["Unbekannt", "Aus", "Startvorbereitung", "Kessel Start", "Zündüberwachung", "Zündung", "Übergang LB", "Leistungsbrand", "Gluterhaltung", "Warten auf EA", "Entaschung", "-", "Putzen"]
-            self._options = ["Unbekannt", "Aus", "Startvorbereitung", "Kessel Start", "Anheizen", "Zündung", "Leistungsbrand", "Leistungsbrand2", "Gluterhaltung", "Warten auf EA", "Entaschung", "-", "Putzen"]
+            self._options = ["Unbekannt", "Aus", "Startvorbereitung", "Kessel Start", "Anheizen", "Zündung", "Leistungsbrand", "Leistungsbrand-?", "Gluterhaltung", "Ausbrand", "Entaschung", "Restwärme", "Putzen"]
         else:
             self._options = ["Unknown", "Off", "Preparing start", "Boiler start", "Monitoring ignition", "Ignition", "Transition to FF", "Full firing", "Ember preservation", "Waiting for AR", "Ash removal", "-", "Cleaning"]
 
