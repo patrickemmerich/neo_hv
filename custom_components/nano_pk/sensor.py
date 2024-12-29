@@ -201,6 +201,7 @@ class HargassnerStateSensor(HargassnerSensor):
     def __init__(self, bridge, deviceName, lang):
         super().__init__(bridge, deviceName+" boiler state", "ZK")
         self._stateClass = None
+        self._unit = None
         self._deviceClass = SensorDeviceClass.ENUM
         if lang==CONF_LANG_DE:
             # self._options = ["Unbekannt", "Aus", "Startvorbereitung", "Kessel Start", "Zündüberwachung", "Zündung", "Übergang LB", "Leistungsbrand", "Gluterhaltung", "Warten auf EA", "Entaschung", "-", "Putzen"]
