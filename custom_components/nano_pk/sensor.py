@@ -205,7 +205,7 @@ class HargassnerStateSensor(HargassnerSensor):
         self._deviceClass = SensorDeviceClass.ENUM
         if lang==CONF_LANG_DE:
             # self._options = ["Unbekannt", "Aus", "Startvorbereitung", "Kessel Start", "Zündüberwachung", "Zündung", "Übergang LB", "Leistungsbrand", "Gluterhaltung", "Warten auf EA", "Entaschung", "-", "Putzen"]
-            self._options = ["Unbekannt", "Aus", "Startvorbereitung", "Kessel Start", "Anheizen", "Zündung", "Leistungsbrand", "Leistungsbrand-?", "Gluterhaltung", "Ausbrand", "Entaschung", "Restwärme", "Putzen"]
+            self._options = ["Unbekannt", "Aus", "Startvorbereitung", "Kessel Start", "Anheizen", "Zündung", "Leistungsbrand", "Leistungsbrand-?", "Gluterhaltung", "Ausbrand", "Entaschung", "Restwärme", "Putzen", "Tür offen"]
         else:
             self._options = ["Unknown", "Off", "Preparing start", "Boiler start", "Monitoring ignition", "Ignition", "Transition to FF", "Full firing", "Ember preservation", "Waiting for AR", "Ash removal", "-", "Cleaning"]
 
@@ -213,7 +213,7 @@ class HargassnerStateSensor(HargassnerSensor):
         rawState = self._bridge.getValue(self._paramName)
         try:
             idxState = int(rawState)
-            if not (idxState>=0 and idxState<=12):
+            if not (idxState>=0 and idxState<=13):
                 _LOGGER.warning(f"HargassnerStateSensor.update(): State index={idxState} out of bounds.\n")
                 idxState=0
         except Exception:
